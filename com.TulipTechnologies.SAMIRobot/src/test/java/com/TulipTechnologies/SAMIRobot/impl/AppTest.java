@@ -1,4 +1,4 @@
-package com.TulipTechnologies.SAMI-AEC-BCB-Coating-Robot.impl;
+package com.TulipTechnologies.SAMIRobot.impl;
 
 import org.junit.jupiter.api.Test;
 

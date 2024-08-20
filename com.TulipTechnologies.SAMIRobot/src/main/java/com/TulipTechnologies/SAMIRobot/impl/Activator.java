@@ -1,4 +1,4 @@
-package com.TulipTechnologies.SAMI-AEC-BCB-Coating-Robot.impl;
+package com.TulipTechnologies.SAMIRobot.impl;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
