@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1724307805233
+Bnd-LastModified: 1724310861226
 Build-Jdk-Spec: 22
 Bundle-Activator: com.TulipTechnologies.SAMIRobot.impl.Activator
 Bundle-Category: URCap
