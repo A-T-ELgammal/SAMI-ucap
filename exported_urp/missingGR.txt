@@ -1,0 +1,28 @@
+ Program
+   Variables Setup
+   Robot Program
+     MoveL
+       Missing: 2FG Release
+       Waypoint_9
+       Waypoint_7
+       Waypoint_8
+       Missing: 2FG Grip
+       Waypoint_1
+     MoveJ
+       Waypoint_4
+     MoveL
+       Waypoint_11
+       Waypoint_10
+       Missing: 2FG Release
+       Waypoint_5
+       Waypoint_6
+       Waypoint_2
+       Missing: 2FG Grip
+       Waypoint_3
+       Waypoint_12
+     MoveJ
+       Waypoint_9
+     MoveL
+       Waypoint_13
+       Waypoint_8
+       Missing: 2FG Release

@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import com.ur.urcap.api.contribution.ProgramNodeContribution;
 import com.ur.urcap.api.domain.script.ScriptWriter;
 
-public class PainterRobotProgramNodeContribution implements ProgramNodeContribution{
+public class SwingPainterRobotProgramNodeContribution implements ProgramNodeContribution{
 
     @Override
     public void openView() {
@@ -22,7 +22,7 @@ public class PainterRobotProgramNodeContribution implements ProgramNodeContribut
 
     @Override
     public String getTitle() {
-        return "painter robots - SAMI_AEC";    
+        return "painter robots  - SAMI_AEC-contr";    
     }
 
     @Override
@@ -44,11 +44,11 @@ public class PainterRobotProgramNodeContribution implements ProgramNodeContribut
             }
             br.close();
         }else{}
-            writer.appendLine("textmsg(\"Error: painter_robot.urscript file not found\")");
+            writer.appendLine("textmsg(\"Error: socketConnection.urscript file not found\")");
         }
         catch(IOException e)
         {
-            writer.appendLine("textmsg(\"Error reading painter_robot.urscript file: " + e.getMessage() + "\")");
+            writer.appendLine("textmsg(\"Error reading socketConnection.urscript file: " + e.getMessage() + "\")");
         }
     }
     
