@@ -1,56 +1,42 @@
-// package com.TulipTechnologies.SAMIRobot.impl;
+package com.TulipTechnologies.SAMIRobot.impl;
 
-// import java.io.ByteArrayInputStream;
-// import java.io.InputStream;
-// import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 
-// import com.ur.urcap.api.contribution.ProgramNodeContribution;
-// import com.ur.urcap.api.contribution.ProgramNodeService;
-// import com.ur.urcap.api.domain.URCapAPI;
-// import com.ur.urcap.api.domain.data.DataModel;
+import com.ur.urcap.api.contribution.ViewAPIProvider;
+import com.ur.urcap.api.contribution.program.ContributionConfiguration;
+import com.ur.urcap.api.contribution.program.CreationContext;
+import com.ur.urcap.api.contribution.program.ProgramAPIProvider;
+import com.ur.urcap.api.contribution.program.swing.SwingProgramNodeService;
+import com.ur.urcap.api.contribution.program.swing.SwingProgramNodeView;
+import com.ur.urcap.api.domain.data.DataModel;
 
+public class SwingPainterRobotPorgramNodeService implements SwingProgramNodeService<SwingPainterRobotProgramNodeContribution, SwingProgramNodeView<SwingPainterRobotProgramNodeContribution>>{
 
+    @Override
+    public String getId() {
+        return "coating robot";
+    }
 
-// public class SwingPainterRobotPorgramNodeService implements ProgramNodeService{
-//     @Override
-//     public String getId() {
-//         return "Painter_Robot";
-//     }
+    @Override
+    public void configureContribution(ContributionConfiguration configuration) {
+    }
 
-//     @Override
-//     public boolean isDeprecated() {
-//         return false;
-//     }
+    @Override
+    public String getTitle(Locale locale) {
+        return "SAMI-AEC \nCoating_Robot";
+    }
 
-//     @Override
-//     public boolean isChildrenAllowed() {
-//         return false;
-//     }
+    @Override
+    public SwingProgramNodeView<SwingPainterRobotProgramNodeContribution> createView(ViewAPIProvider apiProvider) {
+        return new SwingPainterRobotProgramView();
+    }
 
-//     @Override
-//     public String getTitle() {
-//         return "Painter_Robot ...";
-//     }
+    @Override
+    public SwingPainterRobotProgramNodeContribution createNode(ProgramAPIProvider apiProvider,
+            SwingProgramNodeView<SwingPainterRobotProgramNodeContribution> view, DataModel model,
+            CreationContext context) {
+                return  new SwingPainterRobotProgramNodeContribution(apiProvider, model);
+    }
+      
 
-//     @Override
-//     public InputStream getHTML() {
-
-//         String htmlContent = "<html>" +
-//                              "<head>" +
-//                              "<title>Painter_robot!</title>" +
-//                              "</head>" +
-//                              "<body>" +
-//                              "</body>" +
-//                              "</html>";
-//         InputStream htmlStream = new ByteArrayInputStream(htmlContent.getBytes(StandardCharsets.UTF_8));
-//         return  htmlStream;
-
-//     }
-
-//     @Override
-//     public ProgramNodeContribution createNode(URCapAPI api, DataModel model) {
-//         return new SwingPainterRobotProgramNodeContribution();
-//     }
-    
-
-// }
+}
