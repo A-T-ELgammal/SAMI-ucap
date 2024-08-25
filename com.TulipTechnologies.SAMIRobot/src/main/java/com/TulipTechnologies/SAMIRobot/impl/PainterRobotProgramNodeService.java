@@ -1,65 +1,39 @@
 package com.TulipTechnologies.SAMIRobot.impl;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 
-import com.ur.urcap.api.contribution.ProgramNodeContribution;
-import com.ur.urcap.api.contribution.ProgramNodeService;
-import com.ur.urcap.api.domain.URCapAPI;
+import com.ur.urcap.api.contribution.ViewAPIProvider;
+import com.ur.urcap.api.contribution.program.ContributionConfiguration;
+import com.ur.urcap.api.contribution.program.CreationContext;
+import com.ur.urcap.api.contribution.program.ProgramAPIProvider;
+import com.ur.urcap.api.contribution.program.swing.SwingProgramNodeService;
 import com.ur.urcap.api.domain.data.DataModel;
 
-public class PainterRobotProgramNodeService implements ProgramNodeService{
+public class PainterRobotProgramNodeService implements SwingProgramNodeService<SwingPainterRobotProgramNodeContribution, SwingPainterRobotProgramView>{
 
     @Override
     public String getId() {
-        return "Painter_Robot";
+        return "Coating Robot";
     }
 
     @Override
-    public boolean isDeprecated() {
-        return false;
+    public void configureContribution(ContributionConfiguration configuration) 
+    {    
     }
 
     @Override
-    public boolean isChildrenAllowed() {
-        return false;
+    public String getTitle(Locale locale) {
+       return "SAMI-AEC \nROBOT";
     }
 
     @Override
-    public String getTitle() {
-        return "Painter_Robot ...";
+    public SwingPainterRobotProgramView createView(ViewAPIProvider apiProvider) {
+       return new SwingPainterRobotProgramView();
     }
 
     @Override
-    public InputStream getHTML() {
-        // String logopath = getClass().getResource("/logo.png").toString();
-        // String workflowPath = getClass().getResource("/SAMI-workflow.png").toString();
-        // String htmlContent =    "<html>" +
-        //                         "<body style='text-align: center;'>" +
-        //                         "<img src='" + logopath + "' alt='Logo' width='50%' /><br/>" +
-        //                         "<img src='" + workflowPath + "' alt='Painter Robot Workflow' width='100%' />" +
-        //                         "</body>" +
-        //                         "</html>";
-        // InputStream htmlStream = new ByteArrayInputStream(htmlContent.getBytes(StandardCharsets.UTF_8));
-        // return  htmlStream;
-        //////////////////////////////////////////////////////////////////////
-        String htmlContent = "<html>" +
-                             "<head>" +
-                             "<title>Painter_robot!</title>" +
-                             "</head>" +
-                             "<body>" +
-                             "<h3>implement pick & place task ...  </h3>" +
-                             "</body>" +
-                             "</html>";
-        InputStream htmlStream = new ByteArrayInputStream(htmlContent.getBytes(StandardCharsets.UTF_8));
-        return  htmlStream;
-
+    public SwingPainterRobotProgramNodeContribution createNode(ProgramAPIProvider apiProvider,
+            SwingPainterRobotProgramView view, DataModel model, CreationContext context) {
+            return new SwingPainterRobotProgramNodeContribution(apiProvider, view, model);
     }
-
-    @Override
-    public ProgramNodeContribution createNode(URCapAPI api, DataModel model) {
-        return new PainterRobotProgramNodeContribution();
-    }
-    
 }

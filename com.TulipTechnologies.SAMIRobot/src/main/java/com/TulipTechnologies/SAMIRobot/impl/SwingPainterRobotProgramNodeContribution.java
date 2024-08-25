@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 
 import com.ur.urcap.api.contribution.ProgramNodeContribution;
 import com.ur.urcap.api.contribution.program.ProgramAPIProvider;
+import com.ur.urcap.api.contribution.program.swing.SwingProgramNodeView;
 import com.ur.urcap.api.domain.data.DataModel;
 import com.ur.urcap.api.domain.script.ScriptWriter;
 
@@ -14,10 +15,12 @@ public class SwingPainterRobotProgramNodeContribution implements ProgramNodeCont
 
     private  ProgramAPIProvider apiProvider;
     private DataModel model;
+SwingProgramNodeView<SwingPainterRobotProgramNodeContribution> view;
 
-    public SwingPainterRobotProgramNodeContribution(ProgramAPIProvider apiProvider, DataModel model) {
+    public SwingPainterRobotProgramNodeContribution(ProgramAPIProvider apiProvider, SwingProgramNodeView<SwingPainterRobotProgramNodeContribution> view,DataModel model) {
         this.apiProvider = apiProvider;
         this.model = model;
+        this.view = view;
     }
 
 
@@ -33,7 +36,7 @@ public class SwingPainterRobotProgramNodeContribution implements ProgramNodeCont
 
     @Override
     public String getTitle() {
-        return "PCB-Coating Robot (SAMI-AEC)";
+        return "PCB-Coating Robot \n(SAMI-AEC)";
     }
 
     @Override

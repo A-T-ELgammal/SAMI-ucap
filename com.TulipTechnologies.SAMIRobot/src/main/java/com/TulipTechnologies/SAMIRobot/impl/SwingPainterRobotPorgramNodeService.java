@@ -23,7 +23,7 @@ public class SwingPainterRobotPorgramNodeService implements SwingProgramNodeServ
 
     @Override
     public String getTitle(Locale locale) {
-        return "SAMI-AEC \nCoating_Robot";
+        return " ";
     }
 
     @Override
@@ -35,8 +35,9 @@ public class SwingPainterRobotPorgramNodeService implements SwingProgramNodeServ
     public SwingPainterRobotProgramNodeContribution createNode(ProgramAPIProvider apiProvider,
             SwingProgramNodeView<SwingPainterRobotProgramNodeContribution> view, DataModel model,
             CreationContext context) {
-                return  new SwingPainterRobotProgramNodeContribution(apiProvider, model);
-    }
-      
+                return new SwingPainterRobotProgramNodeContribution(apiProvider, view, model);
+                
+            }
+
 
 }
