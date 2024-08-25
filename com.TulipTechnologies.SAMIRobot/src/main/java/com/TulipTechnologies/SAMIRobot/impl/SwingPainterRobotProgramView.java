@@ -10,7 +10,6 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import com.ur.urcap.api.contribution.ContributionProvider;
 import com.ur.urcap.api.contribution.program.swing.SwingProgramNodeView;
@@ -29,28 +28,30 @@ public class SwingPainterRobotProgramView implements SwingProgramNodeView<SwingP
     public void buildUI(JPanel panel, ContributionProvider<SwingPainterRobotProgramNodeContribution> provider) {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         // panel.setBorder(BorderFactory.createEmptyBorder(VERTICAL_GAP, VERTICAL_GAP, VERTICAL_GAP, VERTICAL_GAP));
-
         // Company Logo (placeholder)
-        JLabel logoLabel = createImageLabel(provider ,"logo.png", 200, 50);
+        JLabel logoLabel = createImageLabel(provider ,"logo.png", 230, 55);
         panel.add(logoLabel);
         panel.add(Box.createRigidArea(new Dimension(0, VERTICAL_GAP)));
 
         // Client Company
-        JLabel clinetLogoLabel = createImageLabel(provider ,"SAMI-logo.png", 200, 50);
+        JLabel clinetLogoLabel = createImageLabel(provider ,"SAMI-logo.png", 190, 50);
         panel.add(clinetLogoLabel);
         panel.add(Box.createRigidArea(new Dimension(0, VERTICAL_GAP)));
 
         // Project Name
-        JLabel projectNameLabel = createStyledLabel(" PCB Acrylic Conformal  Coating Spray Painting  Robotic Cell", 15);
+        JLabel projectNameLabel = createStyledLabel(" PCB Acrylic Conformal  Coating Spray Painting  Robotic Cell", 17);
+
         panel.add(projectNameLabel);
         panel.add(Box.createRigidArea(new Dimension(0, VERTICAL_GAP)));
 
         // Workflow Image (placeholder)
-        JLabel workflowLabel = createImageLabel(provider,"SAMI-workflow.png", 700, 400);
-        JScrollPane scrollPane = new JScrollPane(workflowLabel);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        panel.add(scrollPane);
+        JLabel workflowLabel = createImageLabel(provider,"SAMI-workflow.png", panel.getWidth(), 360);
+        // JScrollPane scrollPane = new JScrollPane(workflowLabel);
+        // scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        // scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        panel.add(workflowLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, VERTICAL_GAP)));
+
     }
 
 
