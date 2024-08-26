@@ -36,7 +36,7 @@ SwingProgramNodeView<SwingPainterRobotProgramNodeContribution> view;
 
     @Override
     public String getTitle() {
-        return "PCB-Coating Robot \n(SAMI-AEC)";
+        return "PCB-Coating Robot (SAMI-AEC)";
     }
 
     @Override
@@ -47,23 +47,24 @@ SwingProgramNodeView<SwingPainterRobotProgramNodeContribution> view;
     @Override
     public void generateScript(ScriptWriter writer) {
         InputStream is = getClass().getResourceAsStream("/painter_robot.urscript");
-        try{        
-        if (is != null)
-        {
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            String line;
-            while((line = br.readLine()) != null)
+        try{      
+                
+            if (is != null)
             {
-                writer.appendLine(line);
-            }
-            br.close();
-        }else{}
-            writer.appendLine("textmsg(\"Error: painter_robot.urscript file not found\")");
+                BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                String line;
+                while((line = br.readLine()) != null)
+                {
+                    writer.appendLine(line);
+                }
+                br.close();
+            }else{}
+                writer.appendLine("textmsg(\"Error: painter_robot.urscript file not found\")");
         }
         catch(IOException e)
-        {
-            writer.appendLine("textmsg(\"Error reading painter_robot.urscript file: " + e.getMessage() + "\")");
-        }
+            {
+                writer.appendLine("textmsg(\"Error reading painter_robot.urscript file: " + e.getMessage() + "\")");
+            }
     }
 
 }

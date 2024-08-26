@@ -12,7 +12,7 @@ import com.ur.urcap.api.contribution.program.swing.SwingProgramNodeService;
 public class Activator implements BundleActivator {
 	@Override
 	public void start(BundleContext bundleContext) throws Exception {
-		bundleContext.registerService(SwingProgramNodeService.class, new PainterRobotProgramNodeService(), null);
+		bundleContext.registerService(SwingProgramNodeService.class, new SwingPainterRobotPorgramNodeService(), null);
 	}
 
 	@Override

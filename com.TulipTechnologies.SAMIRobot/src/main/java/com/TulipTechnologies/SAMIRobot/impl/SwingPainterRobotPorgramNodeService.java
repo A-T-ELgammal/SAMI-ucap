@@ -23,7 +23,7 @@ public class SwingPainterRobotPorgramNodeService implements SwingProgramNodeServ
 
     @Override
     public String getTitle(Locale locale) {
-        return " ";
+        return "robot--aa";
     }
 
     @Override
