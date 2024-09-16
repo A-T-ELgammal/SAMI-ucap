@@ -13,3 +13,10 @@ def moveOutTo(slotNumber):
   end
 end
 
+def pickMagazineOut(UncoatedESDOut_start, magazineLength_mm):
+twofg_grip(width=45.400000000000006, force=50, speed=100, external_grip=True, stop_if_no_force=True, tool_index=0)
+magazinePosition  = UncoatedESDOut_start + p[0 ]
+movel()
+
+end
+
