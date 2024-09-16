@@ -1,0 +1,15 @@
+UncoatedESDOut_start = [000 000]
+slotWidth_mm = 10
+magazineLength_mm = 5
+magazineWidth_mm = 5
+
+
+def moveOutTo(slotNumber):
+  if slotNumber == 1:
+    movej(UncoatedESDOut_start, a= 1.4, v = .25)
+  else:
+    slotPositionOut = UncoatedESDOut_start + [0 0 (- slotNumber * slotWidth_mm) 0 0 0]
+    movej(slotPositionOut, a = 1.2, v= .25)
+  end
+end
+
