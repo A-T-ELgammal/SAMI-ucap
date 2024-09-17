@@ -1,9 +1,10 @@
 UncoatedESDOut_start = [-290 104 216 2.129 2.49 -2.637]
 slotWidth_m = 0.01
 magazineLength_m = 0.005
-magazineWidth_m = 5
+magazineWidth_mm = 35
 gripperFingerLength_m = 0.05
-firstFixture = [1 2 3 4 5 6]
+tableEdgePosition = [340 -244 -191 2.54 -2.38 2.16]
+fixtureGap_m = 0.1 
 
 def moveOutToSlot(slotNumber):
   if slotNumber == 1:
@@ -15,10 +16,23 @@ def moveOutToSlot(slotNumber):
 end
 
 def pickMagazineOut(UncoatedESDOut_start, magazineLength_m):
-  twofg_grip(width=45.400000000000006, force=40, speed=100, external_grip=True, stop_if_no_force=True, tool_index=0)
+  twofg_grip(width= magazineWidth_mm, force=40, speed=100, external_grip=True, stop_if_no_force=True, tool_index=0)
   magazineOutPosition = get_actual_tcp_pose()
   magazinePosition  = p[magazineOutPosition + [0 gripperFingerLength_m 0 0 0 0]]
   movel(magazineInPosition , a = 1.2, v= 0.25)
   twofg_grip(width=0, force=40, speed=100, external_grip=True, stop_if_no_force=True, tool_index=0)
   movel(magazineOutPosition , a = 1.2, v= 0.25)
+end
+
+def moveToFixtureTop(fixtureNumber):
+  fixturePositionCPTOP = p[tableEdgePosition + [(fixtureNumber * fixtureGap_m) 0 0.1 0 0 0]]
+  movej(fixturePositionCPTOP, a = 1.2, v = 0.25)
+end
+
+def placeOnFixture():
+  fixtureTopPosition = get_actual_tcp_pose()
+  fixturePositionCPDown = p[magazineTopPosition + [0 0 -0.1 0 0 0]]
+  movel(fixturePositionCPDown, a = 1.2, v = 0.10)
+  twofg_grip(width= (magazineWidth_mm + 7), force=40, speed=100, external_grip=True, stop_if_no_force=True, tool_index=0)
+  movel(fixtureTopPosition, a = 1.2, v = 0.10)
 end
