@@ -1,22 +1,24 @@
-UncoatedESDOut_start = [000 000]
-slotWidth_mm = 10
-magazineLength_mm = 5
-magazineWidth_mm = 5
+UncoatedESDOut_start = [-290 104 216 2.129 2.49 -2.637]
+slotWidth_m = 0.01
+magazineLength_m = 0.005
+magazineWidth_m = 5
+gripperFingerLength_m = 0.05
+firstFixture = [1 2 3 4 5 6]
 
-
-def moveOutTo(slotNumber):
+def moveOutToSlot(slotNumber):
   if slotNumber == 1:
-    movej(UncoatedESDOut_start, a= 1.4, v = .25)
+    movej(UncoatedESDOut_start, a= 1.4, v = 0.25)
   else:
-    slotPositionOut = UncoatedESDOut_start + [0 0 (- slotNumber * slotWidth_mm) 0 0 0]
+    slotPositionOut = p[UncoatedESDOut_start + [0 0 (- slotNumber * slotWidth_m) 0 0 0]]
     movej(slotPositionOut, a = 1.2, v= .25)
   end
 end
 
-def pickMagazineOut(UncoatedESDOut_start, magazineLength_mm):
-twofg_grip(width=45.400000000000006, force=50, speed=100, external_grip=True, stop_if_no_force=True, tool_index=0)
-magazinePosition  = UncoatedESDOut_start + p[0 ]
-movel()
-
+def pickMagazineOut(UncoatedESDOut_start, magazineLength_m):
+  twofg_grip(width=45.400000000000006, force=40, speed=100, external_grip=True, stop_if_no_force=True, tool_index=0)
+  magazineOutPosition = get_actual_tcp_pose()
+  magazinePosition  = p[magazineOutPosition + [0 gripperFingerLength_m 0 0 0 0]]
+  movel(magazineInPosition , a = 1.2, v= 0.25)
+  twofg_grip(width=0, force=40, speed=100, external_grip=True, stop_if_no_force=True, tool_index=0)
+  movel(magazineOutPosition , a = 1.2, v= 0.25)
 end
-
