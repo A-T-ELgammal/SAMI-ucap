@@ -46,7 +46,7 @@ SwingProgramNodeView<SwingPainterRobotProgramNodeContribution> view;
 
     @Override
     public void generateScript(ScriptWriter writer) {
-        InputStream is = getClass().getResourceAsStream("/painter_robot.urscript");
+        InputStream is = getClass().getResourceAsStream("/SAMI-pick_place.urscript");
         try{      
                 
             if (is != null)
