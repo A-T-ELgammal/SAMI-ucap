@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1726640651757
+Bnd-LastModified: 1726645737860
 Build-Jdk-Spec: 22
 Bundle-Activator: com.TulipTechnologies.SAMIRobot.impl.Activator
 Bundle-Category: URCap
@@ -11,7 +11,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: SAMIRobot
 Bundle-SymbolicName: com.TulipTechnologies.SAMIRobot
 Bundle-Vendor: URCaps R us Inc.
-Bundle-Version: 0.0.0.UR5e-SNAPSHOT
+Bundle-Version: 0.0.0.UR10-SNAPSHOT
 Created-By: Apache Maven Bundle Plugin 5.1.9
 Import-Package: com.ur.urcap.api.contribution;version="[1.9,2)",com.ur.u
  rcap.api.contribution.program;version="[1.9,2)",com.ur.urcap.api.contri

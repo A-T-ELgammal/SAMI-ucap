@@ -7,7 +7,7 @@
 
 	<groupId>com.TulipTechnologies</groupId>
 	<artifactId>SAMIRobot</artifactId>
-	<version>UR5e-SNAPSHOT</version>
+	<version>1.9-SNAPSHOT</version>
 	<name>SAMIRobot</name>
 	<packaging>bundle</packaging>
 
