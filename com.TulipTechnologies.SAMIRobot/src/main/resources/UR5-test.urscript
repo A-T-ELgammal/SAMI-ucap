@@ -1,0 +1,93 @@
+global Neutral_Pose_p=p[-.133991945264, .214020957670, .486088787553, -1.534593169925, -.001860860884, .001835635892]
+global Neutral_Pose_q=[-1.5706966260508182, -2.260393287561964, 2.024373545229727, 0.1990736991509856, -4.715220685295874, 3.1446211100564874]
+global Waypoint_2_p=p[-.096301914960, .365932427839, -.040830642289, -1.534593169940, -.001860860880, .001835635892]
+global Waypoint_2_q=[-1.7184962560088834, -0.7108646784006378, 2.477021585692309, -1.8033223414885367, -4.858932467217198, 3.145814551706699]
+global Waypoint_3_p=p[-.096301914988, .397437521774, -.040830642181, -1.534593169940, -.001860860880, .001835635892]
+global Waypoint_3_q=[-1.7020692765154175, -0.7286006405401935, 2.3958436350292693, -1.704374685735429, -4.842408204236373, 3.1454432361219915]
+global Waypoint_4_p=p[-.096301915028, .344496006229, -.040830642031, -1.534593169940, -.001860860880, .001835635890]
+global Waypoint_4_q=[-1.7323684174483809, -0.6897290883578462, 2.5314582001869375, -1.8789277799620034, -4.87288584194496, 3.1461478682682413]
+global Waypoint_1_p=p[.214039120825, .133971832147, .486077234501, -1.183588013212, 1.180861783542, -1.224397782173]
+global Waypoint_1_q=[-3.141592653589793, -2.2603780231871546, 2.0243905226336882, 0.19907419263806148, -4.715233031903403, 3.1446533203125]
+global Waypoint_7_p=p[.539688411715, .164188925431, .486077234455, -1.183588013212, 1.180861783542, -1.224397782172]
+global Waypoint_7_q=[-3.074499169988179, -1.44285628315862, 1.4478541769349, -0.041777761502073574, -4.646357189873446, 3.1422618757473195]
+global Waypoint_8_p=p[.240725368131, .379523681473, -.039999650415, -1.534593169951, -.001860860883, .001835635881]
+global Waypoint_8_q=[-2.653521935979823, -0.7346056444623477, 2.2511312634142016, -1.5939579601457945, -5.792586033379943, 3.2096044888333033]
+global Waypoint_5_p=p[.240725368099, .407786257567, -.039999650402, -1.534593169961, -.001860860885, .001835635879]
+global Waypoint_5_q=[-2.5847149366232096, -0.7289111741157193, 2.18769951617546, -1.5277880729012399, -5.723906127497408, 3.1998274297682165]
+global Waypoint_6_p=p[.240725367963, .337049130663, -.039999650345, -1.534593170119, -.001860860902, .001835635849]
+global Waypoint_6_q=[-2.771544578736517, -0.7348954092790541, 2.342391559604647, -1.7070550492418732, -5.9102594880961545, 3.234009791469221]
+
+movej(get_inverse_kin(Neutral_Pose_p, qnear=Neutral_Pose_q), a=1.0471975511965976, v=0.6981317007977318, r=0.05)
+movej(get_inverse_kin(Neutral_Pose_p, qnear=Neutral_Pose_q), a=1.0471975511965976, v=0.6981317007977318, r=0.05)
+while isVentionMovementBusyControllerUR5e==True:
+sleep(0.05)
+end
+if(isVentionMovementBusyControllerUR5e == False):
+isVentionMovementBusyControllerUR5e = True
+socket_send_string("estop/status;", "ControllerUR5e")
+temp_estop_var_vention = socket_read_string("ControllerUR5e",timeout=15)
+while(temp_estop_var_vention=="estop/status true"):
+if temp_estop_var_vention=="estop/status true":
+sendStringWithTimeout("estop/systemreset/request","Ack estop/systemreset/request;","ControllerUR5e")
+end
+socket_send_string("estop/status;", "ControllerUR5e")
+temp_estop_var_vention = socket_read_string("ControllerUR5e",timeout=15)
+if temp_estop_var_vention=="estop/status true":
+popup("MachineMotion in estop, make sure you have all emergency modules released manually. If you continue the system will try to reset MachineMotion automatically.",blocking=True)
+end
+end
+else:
+popup("resource is being used already: ControllerUR5e")
+halt
+end
+isVentionMovementBusyControllerUR5e = True
+sendString("im_home_axis_1", "MachineMotion im_home_axis_1 = completed", "ControllerUR5e")
+isVentionMovementBusyControllerUR5e = False
+sendString("SET im_set_encoder_pos_aux_1 0.000", "Ack", "ControllerUR5e")
+isVentionMovementBusyControllerUR5e = False
+sleep(0.03)
+while isVentionMovementBusyControllerUR5e==True:
+sleep(0.05)
+end
+if(isVentionMovementBusyControllerUR5e == False):
+isVentionMovementBusyControllerUR5e = True
+socket_send_string("estop/status;", "ControllerUR5e")
+temp_estop_var_vention = socket_read_string("ControllerUR5e",timeout=15)
+while(temp_estop_var_vention=="estop/status true"):
+if temp_estop_var_vention=="estop/status true":
+sendStringWithTimeout("estop/systemreset/request","Ack estop/systemreset/request;","ControllerUR5e")
+end
+socket_send_string("estop/status;", "ControllerUR5e")
+temp_estop_var_vention = socket_read_string("ControllerUR5e",timeout=15)
+if temp_estop_var_vention=="estop/status true":
+popup("MachineMotion in estop, make sure you have all emergency modules released manually. If you continue the system will try to reset MachineMotion automatically.",blocking=True)
+end
+end
+else:
+popup("resource is being used already: ControllerUR5e")
+halt
+end
+sendString("SET speed_v2 6000000.000", "Ack", "ControllerUR5e")
+sendString("SET acceleration_v2 50000.000", "Ack", "ControllerUR5e")
+sendString("SET de_move_abs_1 250000.000", "Ack", "ControllerUR5e")
+sendString("de_move_abs_exec", "Ack", "ControllerUR5e")
+isVentionParallelMovementSendingScriptControllerUR5e = False
+pollString("isMotionCompleted", "MachineMotion isMotionCompleted = true", "ControllerUR5e")
+isVentionMovementBusyControllerUR5e = False
+sleep(0.03)
+movel(Neutral_Pose_p, a=1.2, v=0.25, r=0.05)
+movel(Waypoint_2_p, a=1.2, v=0.25, r=0.028999999999999998)
+movel(Waypoint_3_p, a=1.2, v=0.25, r=0.001)
+movel(Waypoint_4_p, a=1.2, v=0.25, r=0.05)
+movel(Neutral_Pose_p, a=1.2, v=0.25, r=0.05)
+movej(get_inverse_kin(Waypoint_1_p, qnear=Waypoint_1_q), a=1.3962634015954636, v=1.0471975511965976)
+movej(get_inverse_kin(Waypoint_7_p, qnear=Waypoint_7_q), a=1.3962634015954636, v=1.0471975511965976)
+movej(get_inverse_kin(Neutral_Pose_p, qnear=Neutral_Pose_q), a=1.3962634015954636, v=1.0471975511965976)
+movel(Waypoint_8_p, a=1.2, v=0.25, r=0.027)
+movel(Waypoint_5_p, a=1.2, v=0.25)
+movel(Waypoint_6_p, a=1.2, v=0.25, r=0.05)
+movel(Neutral_Pose_p, a=1.2, v=0.25, r=0.05)
+movej(get_inverse_kin(Waypoint_1_p, qnear=Waypoint_1_q), a=1.3962634015954636, v=1.0471975511965976)
+movej(get_inverse_kin(Waypoint_7_p, qnear=Waypoint_7_q), a=1.3962634015954636, v=1.0471975511965976)
+movej(get_inverse_kin(Neutral_Pose_p, qnear=Neutral_Pose_q), a=1.3962634015954636, v=1.0471975511965976)
+sleep(30.0)
